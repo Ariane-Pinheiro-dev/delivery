@@ -35,10 +35,12 @@ public class Cliente {
     @Column(unique = true)
     private String email;
     @CPF
+    @NotBlank
     private String cpf;
     @NotNull
-    private Boolean aceitaTermos;
     private LocalDate dataNascimento;
+    @NotNull
+    private Boolean aceitaTermos;
 
     private LocalDateTime dataHoraDoCadastro;
     private LocalDateTime dataHoraDaUltimaAlteracao;
