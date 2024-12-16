@@ -1,7 +1,8 @@
 package br.com.restaurante.delivery.service;
 
 import br.com.restaurante.delivery.api.ClienteRequest;
+import br.com.restaurante.delivery.api.ClienteResponse;
 
 public interface ClienteService {
-    ClienteService criaCliente(ClienteRequest clienteRequest);
+    ClienteResponse criaCliente(ClienteRequest clienteRequest);
 }
