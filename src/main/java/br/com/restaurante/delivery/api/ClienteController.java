@@ -10,13 +10,13 @@ import java.util.logging.Logger;
 @Slf4j
 @RequiredArgsConstructor
 public class ClienteController implements ClienteAPI {
-    private static final Logger LOGGER = Logger.getLogger(ClienteController.class.getName());
-    private ClienteService clienteService;
+    private final ClienteService clienteService;
 
     @Override
     public ClienteResponse postCliente(ClienteRequest clienteRequest) {
-        LOGGER.info("Inicia ClienteController - postCliente");
-        LOGGER.info("Finaliza ClienteController - postCliente");
-        return null;
+        log.info("Inicia ClienteController - postCliente");
+        ClienteResponse clienteCriado = clienteService.criaCliente(clienteRequest);
+        log.info("Finaliza ClienteController - postCliente");
+        return clienteCriado;
     }
 }

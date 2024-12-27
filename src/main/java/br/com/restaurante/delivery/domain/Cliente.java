@@ -6,7 +6,6 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
-import lombok.Generated;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
@@ -46,16 +45,16 @@ public class Cliente {
     private LocalDateTime dataHoraDaUltimaAlteracao;
 
     public Cliente(ClienteRequest clienteRequest) {
-        this.nomeCompleto = nomeCompleto;
-        this.endereco = endereco;
-        this.celular = celular;
-        this.telefone = telefone;
-        this.sexo = sexo;
-        this.email = email;
-        this.cpf = cpf;
-        this.aceitaTermos = aceitaTermos;
-        this.dataNascimento = dataNascimento;
-        this.dataHoraDoCadastro = dataHoraDoCadastro;
+        this.nomeCompleto = clienteRequest.getNomeCompleto();
+        this.endereco = clienteRequest.getEndereco();
+        this.celular = clienteRequest.getCelular();
+        this.telefone = clienteRequest.getTelefone();
+        this.sexo = clienteRequest.getSexo();
+        this.email = clienteRequest.getEmail();
+        this.cpf = clienteRequest.getCpf();
+        this.aceitaTermos = clienteRequest.getAceitaTermos();
+        this.dataNascimento = clienteRequest.getDataNascimento();
+        this.dataHoraDoCadastro = LocalDateTime.now();
     }
 }
 
