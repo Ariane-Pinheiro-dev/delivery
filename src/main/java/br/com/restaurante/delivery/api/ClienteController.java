@@ -24,13 +24,15 @@ public class ClienteController implements ClienteAPI {
         log.info("[finaliza] ClienteController - postCliente");
         return clienteCriado;
     }
+
     @Override
-    public List<ClienteListResponse> getTodosClientes(){
+    public List<ClienteListResponse> getTodosClientes() {
         log.info("[inicia] ClienteController - getTodosClientes");
         List<ClienteListResponse> clientes = clienteService.buscaTodosClientes();
         log.info("[finaliza] ClienteController - getTodosClientes");
         return clientes;
     }
+
     @Override
     public ClienteDetalhadoResponse getClienteAtravesId(UUID idCliente) {
         log.info("[inicia] ClienteController - getClienteAtravesId");
@@ -38,5 +40,12 @@ public class ClienteController implements ClienteAPI {
         ClienteDetalhadoResponse clienteDetalhado = clienteService.buscaClienteAtravesId(idCliente);
         log.info("[finaliza] ClienteController - getClienteAtravesId");
         return clienteDetalhado;
+    }
+
+    public void deletaClienteAtravesId(UUID idCliente) {
+        log.info("[inicia] ClienteController - deletaClienteAtravesId");
+        log.info("[idCliente] {}", idCliente);
+        clienteService.deletaClienteAtravesId(idCliente);
+        log.info("[finaliza] ClienteController - deletaClienteAtravesId");
     }
 }
