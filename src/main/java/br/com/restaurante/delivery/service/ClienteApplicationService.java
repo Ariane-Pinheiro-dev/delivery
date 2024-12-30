@@ -1,9 +1,6 @@
 package br.com.restaurante.delivery.service;
 
-import br.com.restaurante.delivery.api.ClienteDetalhadoResponse;
-import br.com.restaurante.delivery.api.ClienteListResponse;
-import br.com.restaurante.delivery.api.ClienteRequest;
-import br.com.restaurante.delivery.api.ClienteResponse;
+import br.com.restaurante.delivery.api.*;
 import br.com.restaurante.delivery.domain.Cliente;
 import br.com.restaurante.delivery.infra.ClienteInfraRepository;
 import lombok.RequiredArgsConstructor;
@@ -52,5 +49,14 @@ public class ClienteApplicationService implements ClienteService {
         clienteRepository.deletaCliente(cliente);
         log.info("[Finish] ClienteService.deletaClienteAtravesId");
 
+    }
+
+    @Override
+    public void patchAlteraCliente(UUID idCliente, ClienteAlteracaoRequest clienteAlteracaoRequest) {
+        log.info("[Start] ClienteService.patchAlteraCliente");
+        Cliente cliente = clienteRepository.buscaClienteAtravesId(idCliente);
+        cliente.altera(clienteAlteracaoRequest);
+        clienteRepository.salva(cliente);
+        log.info("[Finish] ClienteService.patchAlteraCliente");
     }
 }

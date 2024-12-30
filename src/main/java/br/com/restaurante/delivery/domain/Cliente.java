@@ -1,5 +1,6 @@
 package br.com.restaurante.delivery.domain;
 
+import br.com.restaurante.delivery.api.ClienteAlteracaoRequest;
 import br.com.restaurante.delivery.api.ClienteRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -56,6 +57,17 @@ public class Cliente {
         this.aceitaTermos = clienteRequest.getAceitaTermos();
         this.dataNascimento = clienteRequest.getDataNascimento();
         this.dataHoraDoCadastro = LocalDateTime.now();
+    }
+
+    public void altera(ClienteAlteracaoRequest clienteRequest) {
+        this.nomeCompleto = clienteRequest.getNomeCompleto();
+        this.endereco = clienteRequest.getEndereco();
+        this.celular = clienteRequest.getCelular();
+        this.telefone = clienteRequest.getTelefone();
+        this.sexo = clienteRequest.getSexo();
+        this.dataNascimento = clienteRequest.getDataNascimento();
+        this.dataHoraDoCadastro = LocalDateTime.now();
+        
     }
 }
 

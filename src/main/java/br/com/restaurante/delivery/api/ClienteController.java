@@ -1,5 +1,7 @@
 package br.com.restaurante.delivery.api;
 
+import br.com.restaurante.delivery.domain.Cliente;
+import br.com.restaurante.delivery.infra.ClienteInfraRepository;
 import br.com.restaurante.delivery.service.ClienteService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -42,10 +44,19 @@ public class ClienteController implements ClienteAPI {
         return clienteDetalhado;
     }
 
+    @Override
     public void deletaClienteAtravesId(UUID idCliente) {
         log.info("[inicia] ClienteController - deletaClienteAtravesId");
         log.info("[idCliente] {}", idCliente);
         clienteService.deletaClienteAtravesId(idCliente);
         log.info("[finaliza] ClienteController - deletaClienteAtravesId");
     }
+
+    public void patchAlteraCliente(UUID idCliente, ClienteAlteracaoRequest clienteAlteracaoRequest){
+        log.info("[inicia] ClienteController - patchAlteraCliente");
+        log.info("[idCliente] {}", idCliente);
+        clienteService.patchAlteraCliente(idCliente,clienteAlteracaoRequest);
+        log.info("[finaliza] ClienteController - patchAlteraCliente");
+    }
+
 }
