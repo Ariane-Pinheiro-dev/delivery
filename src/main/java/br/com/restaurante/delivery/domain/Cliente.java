@@ -20,7 +20,7 @@ import java.util.UUID;
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(columnDefinition = "uuid", name = "idCliente, updatable = false, unique = true, nullable = false")
+    @Column(columnDefinition = "uuid", name = "id", updatable = false, unique = true, nullable = false)
     private UUID idCliente;
     @NotBlank
     private String nomeCompleto;
@@ -35,6 +35,7 @@ public class Cliente {
     private String email;
     @CPF
     @NotBlank
+    @Column(unique = true)
     private String cpf;
     @NotNull
     private LocalDate dataNascimento;
