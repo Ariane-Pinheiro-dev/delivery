@@ -1,4 +1,4 @@
-package br.com.restaurante.delivery.pedido;
+package br.com.restaurante.delivery.pedido.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
