@@ -7,11 +7,10 @@ import java.time.LocalDateTime;
 
 @Value
 public class PedidoRequest {
-
     @NotBlank
-    private String nomePedido;
+    private String nomeRefeicao;
     private String nomeBebida;
-    private String prefenciaPedido;
+    private String preferenciasPedido;
 
     private LocalDateTime dataHoraDoCadastro;
 }
