@@ -1,6 +1,6 @@
-package br.com.restaurante.delivery.pedido.api;
+package br.com.restaurante.delivery.z_pedido.api;
 
-import br.com.restaurante.delivery.pedido.service.PedidoService;
+import br.com.restaurante.delivery.z_pedido.service.PedidoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,4 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class PedidoController implements PedidoAPI {
     private final PedidoService pedidoService;
 
+    @Override
+    public PedidoResponse postPedido(PedidoRequest pedidoRequest) {
+        return null;
+    }
 }
