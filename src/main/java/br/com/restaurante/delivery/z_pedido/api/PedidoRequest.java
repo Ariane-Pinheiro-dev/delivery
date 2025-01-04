@@ -8,9 +8,9 @@ import java.time.LocalDateTime;
 @Value
 public class PedidoRequest {
     @NotBlank
-    private String nomeRefeicao;
-    private String nomeBebida;
-    private String preferenciasPedido;
+     String nomeRefeicao;
+     String nomeBebida;
+     String observacaoPedido;
 
     private LocalDateTime dataHoraDoCadastro;
 }

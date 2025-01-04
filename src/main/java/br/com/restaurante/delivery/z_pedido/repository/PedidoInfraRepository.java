@@ -12,7 +12,7 @@ public class PedidoInfraRepository implements PedidoRepository{
     private final PedidoSpringDataJPARepository pedidoSpringDataJPARepository;
 
     @Override
-    public Pedido salvaPedido(Pedido pedido) {
+    public Pedido save(Pedido pedido) {
         log.info("[start] PedidoInfraRepository - salvaPedido");
         pedidoSpringDataJPARepository.save(pedido);
         log.info("[finish] PedidoInfraRepository - salvaPedido");

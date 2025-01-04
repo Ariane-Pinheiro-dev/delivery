@@ -16,15 +16,7 @@ import java.util.UUID;
 @Getter
 @Entity
 public class Pedido {
-    private Cliente cliente;
-    private String descricao;
-    private double valor;
 
-    public Pedido(Cliente cliente, String descricao, double valor) {
-        if (cliente == null) {
-            throw new IllegalArgumentException("O cliente não pode ser nulo.");
-        }
-    }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "uuid", name = "idPedido", updatable = false, unique = true, nullable = false)
@@ -34,18 +26,48 @@ public class Pedido {
     private UUID idClienteDelivery;
     @NotBlank
     private String nomeRefeicao;
-    private String nomeBebiba;
-    private String preferenciasPedido;
+    private String nomeBebida;
+    private String observacaoPedido;
 
     private LocalDateTime dataHoraDoPedido;
     private LocalDateTime dataHoraDaUltimaAlteracao;
 
-    public Pedido(UUID idClienteDelivery, @Valid PedidoRequest pedidoRequest) {
+    public Pedido(UUID idClienteDelivery, String nomeRefeicao, String nomeBebida, String observacaoPedido, double valor) {
         this.idClienteDelivery = idClienteDelivery;
-        this.nomeRefeicao = pedidoRequest.getNomeRefeicao();
-        this.preferenciasPedido = pedidoRequest.getPreferenciasPedido();
-        this.nomeBebiba = pedidoRequest.getNomeBebida();
+        this.nomeRefeicao = nomeRefeicao;
+        this.nomeBebida = nomeBebida;
+        this.observacaoPedido = observacaoPedido;
+        this.valor = valor;
         this.dataHoraDoPedido = LocalDateTime.now();
         this.dataHoraDaUltimaAlteracao = LocalDateTime.now();
+    }
+    @ManyToOne
+    @JoinColumn(name = "idClienteDelivery", insertable = false, updatable = false)
+    private Cliente cliente;
+    private String descricao;
+    private double valor;
+
+    public Pedido(Cliente cliente, String descricao, Cardapio cardapio){
+        if (cliente == null){
+            throw new IllegalArgumentException("O cliente não pode ser nulo.");
+        }
+        if (cardapio == null || !cardapio.contemItem(descricao)){
+            throw new IllegalArgumentException("O item solicitado não está disponível no cardápio.");
+        }
+        this.cliente = cliente;
+        this.descricao = descricao;
+        this.valor = cardapio.getPrecoPorItem(descricao);
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public double getValor() {
+        return valor;
     }
 }
