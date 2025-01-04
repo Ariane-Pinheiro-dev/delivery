@@ -69,6 +69,9 @@ public class Cliente {
         this.dataHoraDoCadastro = LocalDateTime.now();
         
     }
+    public String getNome() {
+        return this.nomeCompleto;
+    }
 }
 
 

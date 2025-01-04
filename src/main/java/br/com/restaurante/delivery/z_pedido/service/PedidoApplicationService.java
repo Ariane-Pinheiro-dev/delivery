@@ -1,6 +1,9 @@
 package br.com.restaurante.delivery.z_pedido.service;
 
+import br.com.restaurante.delivery.api.ClienteListResponse;
+import br.com.restaurante.delivery.domain.Cliente;
 import br.com.restaurante.delivery.service.ClienteService;
+import br.com.restaurante.delivery.z_pedido.api.PedidoListResponse;
 import br.com.restaurante.delivery.z_pedido.api.PedidoRequest;
 import br.com.restaurante.delivery.z_pedido.api.PedidoResponse;
 import br.com.restaurante.delivery.z_pedido.domain.Cardapio;
@@ -11,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -52,6 +56,14 @@ public class PedidoApplicationService implements PedidoService {
                 pedido.getNomeBebida(),
                 pedido.getValor(),
                 pedido.getObservacaoPedido());
+    }
+
+    @Override
+    public List<PedidoListResponse> buscaTodosPedidos() {
+            log.info("[Start] PedidoService.buscaTodosPedidos");
+            List<Pedido> pedidos = pedidoRepository.findyAll();
+            log.info("[Finish] PedidosService.buscaTodosPedidos");
+            return PedidoListResponse.converte(pedidos);
     }
 }
 

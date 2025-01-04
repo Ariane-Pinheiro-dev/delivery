@@ -57,6 +57,7 @@ public class Pedido {
         this.cliente = cliente;
         this.descricao = descricao;
         this.valor = cardapio.getPrecoPorItem(descricao);
+
     }
 
     public Cliente getCliente() {
