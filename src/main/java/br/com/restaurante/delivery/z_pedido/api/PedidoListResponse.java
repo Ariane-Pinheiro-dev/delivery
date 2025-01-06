@@ -7,7 +7,6 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class PedidoListResponse {
-
     private UUID idPedido;
     private String nomeCliente;
     private String nomeRefeicao;
@@ -17,12 +16,12 @@ public class PedidoListResponse {
 
     public PedidoListResponse(Pedido pedido) {
         if (pedido != null) {
-        this.idPedido = pedido.getIdPedido();
-        this.nomeCliente = pedido.getCliente() != null ? pedido.getCliente().getNome() : "Desconhecido";
-        this.nomeRefeicao = pedido.getNomeRefeicao();
-        this.nomeBebida = pedido.getNomeBebida();
-        this.observacaoPedido = pedido.getObservacaoPedido();
-        this.valor = pedido.getValor();
+            this.idPedido = pedido.getIdPedido();
+            this.nomeCliente = pedido.getCliente() != null ? pedido.getCliente().getNome() : "Desconhecido";
+            this.nomeRefeicao = pedido.getNomeRefeicao();
+            this.nomeBebida = pedido.getNomeBebida();
+            this.observacaoPedido = pedido.getObservacaoPedido();
+            this.valor = pedido.getValor();
         } else {
             this.idPedido = null;  // ou algum valor padrão
             this.nomeCliente = "Desconhecido";
@@ -31,7 +30,7 @@ public class PedidoListResponse {
             this.observacaoPedido = "";
             this.valor = 0.0;
         }
-        }
+    }
 
     public static List<PedidoListResponse> converte(List<Pedido> pedidos) {
         return pedidos.stream()

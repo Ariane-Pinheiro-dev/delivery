@@ -1,8 +1,5 @@
 package br.com.restaurante.delivery.z_pedido.domain;
 
-import jakarta.persistence.Entity;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

@@ -1,16 +1,16 @@
 package br.com.restaurante.delivery.z_pedido.domain;
 
 import br.com.restaurante.delivery.domain.Cliente;
-import br.com.restaurante.delivery.z_pedido.api.PedidoRequest;
 import jakarta.persistence.*;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
+
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
@@ -41,23 +41,23 @@ public class Pedido {
         this.dataHoraDoPedido = LocalDateTime.now();
         this.dataHoraDaUltimaAlteracao = LocalDateTime.now();
     }
+
     @ManyToOne
     @JoinColumn(name = "idClienteDelivery", insertable = false, updatable = false)
     private Cliente cliente;
     private String descricao;
     private double valor;
 
-    public Pedido(Cliente cliente, String descricao, Cardapio cardapio){
-        if (cliente == null){
+    public Pedido(Cliente cliente, String descricao, Cardapio cardapio) {
+        if (cliente == null) {
             throw new IllegalArgumentException("O cliente não pode ser nulo.");
         }
-        if (cardapio == null || !cardapio.contemItem(descricao)){
+        if (cardapio == null || !cardapio.contemItem(descricao)) {
             throw new IllegalArgumentException("O item solicitado não está disponível no cardápio.");
         }
         this.cliente = cliente;
         this.descricao = descricao;
         this.valor = cardapio.getPrecoPorItem(descricao);
-
     }
 
     public Cliente getCliente() {

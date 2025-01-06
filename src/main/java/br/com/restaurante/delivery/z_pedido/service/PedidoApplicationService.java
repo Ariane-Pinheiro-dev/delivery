@@ -1,7 +1,5 @@
 package br.com.restaurante.delivery.z_pedido.service;
 
-import br.com.restaurante.delivery.api.ClienteListResponse;
-import br.com.restaurante.delivery.domain.Cliente;
 import br.com.restaurante.delivery.service.ClienteService;
 import br.com.restaurante.delivery.z_pedido.api.PedidoListResponse;
 import br.com.restaurante.delivery.z_pedido.api.PedidoRequest;
@@ -60,10 +58,20 @@ public class PedidoApplicationService implements PedidoService {
 
     @Override
     public List<PedidoListResponse> buscaTodosPedidos() {
-            log.info("[Start] PedidoService.buscaTodosPedidos");
-            List<Pedido> pedidos = pedidoRepository.findyAll();
-            log.info("[Finish] PedidosService.buscaTodosPedidos");
-            return PedidoListResponse.converte(pedidos);
+        log.info("[Start] PedidoService.buscaTodosPedidos");
+        List<Pedido> pedidos = pedidoRepository.findyAll();
+        log.info("[Finish] PedidosService.buscaTodosPedidos");
+        return PedidoListResponse.converte(pedidos);
+    }
+
+    @Override
+    public List<PedidoListResponse> buscarPedidosPorCliente(UUID idCliente) {
+        log.info("[Start] PedidoApplicationService - buscarPedidosPorCliente");
+        log.info("[idCliente] {}", idCliente);
+        clienteService.buscaClienteAtravesId(idCliente); // Verifica se o cliente existe
+        List<Pedido> pedidos = pedidoRepository.buscaPedidosPorCliente(idCliente.toString());
+        log.info("[Finish] PedidoApplicationService - buscarPedidosPorCliente - Total de pedidos encontrados: {}", pedidos.size());
+        return PedidoListResponse.converte(pedidos);
     }
 }
 

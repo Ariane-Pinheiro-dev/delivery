@@ -11,4 +11,5 @@ import java.util.UUID;
 public interface PedidoService {
     PedidoResponse criaPedido(UUID idCliente, @Valid PedidoRequest pedidoRequest);
     List<PedidoListResponse> buscaTodosPedidos();
+    List<PedidoListResponse> buscarPedidosPorCliente(UUID idCliente);
 }

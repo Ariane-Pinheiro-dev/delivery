@@ -1,7 +1,5 @@
 package br.com.restaurante.delivery.z_pedido.api;
 
-import br.com.restaurante.delivery.api.ClienteListResponse;
-import br.com.restaurante.delivery.z_pedido.domain.Pedido;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -21,4 +19,8 @@ public interface PedidoAPI {
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
     List<PedidoListResponse> getTodosPedidos();
+
+    @GetMapping(value = "/{idPedido}")
+    @ResponseStatus(code = HttpStatus.OK)
+    List<PedidoListResponse> getPedidosPorCliente(@PathVariable UUID idCliente);
 }
