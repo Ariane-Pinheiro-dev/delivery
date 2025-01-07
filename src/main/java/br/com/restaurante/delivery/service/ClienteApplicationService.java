@@ -3,6 +3,8 @@ package br.com.restaurante.delivery.service;
 import br.com.restaurante.delivery.api.*;
 import br.com.restaurante.delivery.domain.Cliente;
 import br.com.restaurante.delivery.infra.ClienteInfraRepository;
+import br.com.restaurante.delivery.z_pedido.api.PedidoRequest;
+import br.com.restaurante.delivery.z_pedido.domain.Pedido;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -58,5 +60,6 @@ public class ClienteApplicationService implements ClienteService {
         cliente.altera(clienteAlteracaoRequest);
         clienteRepository.salva(cliente);
         log.info("[Finish] ClienteService.patchAlteraCliente");
+
     }
 }

@@ -2,6 +2,7 @@ package br.com.restaurante.delivery.domain;
 
 import br.com.restaurante.delivery.api.ClienteAlteracaoRequest;
 import br.com.restaurante.delivery.api.ClienteRequest;
+import br.com.restaurante.delivery.z_pedido.domain.Pedido;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -13,6 +14,8 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -25,6 +28,8 @@ public class Cliente {
     private UUID idCliente;
     @NotBlank
     private String nomeCompleto;
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Pedido> pedidos = new ArrayList<>();
     @NotBlank
     private String endereco;
     private String celular;
@@ -67,12 +72,25 @@ public class Cliente {
         this.sexo = clienteRequest.getSexo();
         this.dataNascimento = clienteRequest.getDataNascimento();
         this.dataHoraDoCadastro = LocalDateTime.now();
-        
     }
+
     public String getNome() {
         return this.nomeCompleto;
     }
+
+    public void adicionarPedido(Pedido pedido) {
+        pedido.setCliente(this);
+        this.pedidos.add(pedido);
+    }
+
+    public void removerPedido(UUID pedidoId) {
+        this.pedidos.removeIf(pedido -> pedido.getIdPedido().equals(pedidoId));
+    }
 }
+
+
+
+
 
 
 

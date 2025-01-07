@@ -71,4 +71,8 @@ public class Pedido {
     public double getValor() {
         return valor;
     }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 }
