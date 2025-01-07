@@ -76,15 +76,7 @@ public class Cliente {
 
     public String getNome() {
         return this.nomeCompleto;
-    }
 
-    public void adicionarPedido(Pedido pedido) {
-        pedido.setCliente(this);
-        this.pedidos.add(pedido);
-    }
-
-    public void removerPedido(UUID pedidoId) {
-        this.pedidos.removeIf(pedido -> pedido.getIdPedido().equals(pedidoId));
     }
 }
 
