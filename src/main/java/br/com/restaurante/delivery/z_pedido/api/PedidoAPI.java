@@ -20,7 +20,11 @@ public interface PedidoAPI {
     @ResponseStatus(code = HttpStatus.OK)
     List<PedidoListResponse> getTodosPedidos();
 
-    @GetMapping(value = "/{idPedido}")
+    @GetMapping(value = "/cliente/{idCliente}")
     @ResponseStatus(code = HttpStatus.OK)
     List<PedidoListResponse> getPedidosPorCliente(@PathVariable UUID idCliente);
+
+    @DeleteMapping(value = "/pedido/{idPedido}/cliente/{idCliente}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void deletePedidoDoClienteComId(@PathVariable UUID idPedido, @PathVariable UUID idCliente);
 }

@@ -44,4 +44,13 @@ public class PedidoController implements PedidoAPI {
         log.info("[finaliza] PedidoController - getPedidosPorCliente - Total de pedidos encontrados: {}", pedidos.size());
         return pedidos;
     }
+
+    @Override
+    public void deletePedidoDoClienteComId(@PathVariable UUID idPedido, @PathVariable UUID idCliente) {
+        log.info("[inicia] PedidoController - deletePedidoDoCliente");
+        log.info("[idPedido] {} - [idCliente] {}", idPedido, idCliente);
+        pedidoService.deletaPedidoDoClienteComId(idPedido, idCliente);
+        log.info("[finaliza] PedidoController - deletePedidoDoCliente");
+
+    }
 }

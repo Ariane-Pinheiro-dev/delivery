@@ -10,7 +10,9 @@ import br.com.restaurante.delivery.z_pedido.repository.PedidoRepository;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.UUID;
@@ -73,5 +75,21 @@ public class PedidoApplicationService implements PedidoService {
         log.info("[Finish] PedidoApplicationService - buscarPedidosPorCliente - Total de pedidos encontrados: {}", pedidos.size());
         return PedidoListResponse.converte(pedidos);
     }
+
+    @Override
+    public void deletaPedidoDoClienteComId(UUID idPedido, UUID idCliente) {
+        log.info("[Start] PedidoApplicationService - deletaPedido");
+        log.info("[idPedido] {} - [idCliente] {}", idPedido, idCliente);
+        clienteService.buscaClienteAtravesId(idCliente);
+        Pedido pedido = pedidoRepository.findById(idPedido)
+                .orElseThrow(() -> new IllegalArgumentException("Pedido não encontrado"));
+        if (!pedido.getIdClienteDelivery().equals(idCliente)) {
+            throw new IllegalArgumentException("O pedido não pertence ao cliente informado");
+        }
+        pedidoRepository.delete(pedido);
+        log.info("[Finish] PedidoApplicationService - deletaPedido");
+    }
 }
+
+
 
