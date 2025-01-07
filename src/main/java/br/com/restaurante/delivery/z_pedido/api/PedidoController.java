@@ -1,7 +1,9 @@
 package br.com.restaurante.delivery.z_pedido.api;
 
+import br.com.restaurante.delivery.z_pedido.domain.Pedido;
 import br.com.restaurante.delivery.z_pedido.service.PedidoApplicationService;
 import br.com.restaurante.delivery.z_pedido.service.PedidoService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,5 +56,11 @@ public class PedidoController implements PedidoAPI {
 
     }
 
-    
+    @Override
+    public void patchPedido(UUID idCliente, UUID idPedido, @Valid PedidoAlteracaoRequest pedidoAlteracaoRequest) {
+        log.info("[inicia] PedidoController - patchPedido");
+        log.info("[idCliente] {} - [idPedido] {}", idCliente, idPedido);
+        pedidoService.alteraPedidoDoClienteComID(idCliente, idPedido, pedidoAlteracaoRequest);
+        log.info("[inicia] PedidoController - patchPedido");
+    }
 }

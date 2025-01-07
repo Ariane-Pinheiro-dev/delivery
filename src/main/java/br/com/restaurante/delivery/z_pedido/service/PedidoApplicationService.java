@@ -1,6 +1,7 @@
 package br.com.restaurante.delivery.z_pedido.service;
 
 import br.com.restaurante.delivery.service.ClienteService;
+import br.com.restaurante.delivery.z_pedido.api.PedidoAlteracaoRequest;
 import br.com.restaurante.delivery.z_pedido.api.PedidoListResponse;
 import br.com.restaurante.delivery.z_pedido.api.PedidoRequest;
 import br.com.restaurante.delivery.z_pedido.api.PedidoResponse;
@@ -70,7 +71,7 @@ public class PedidoApplicationService implements PedidoService {
     public List<PedidoListResponse> buscarPedidosPorCliente(UUID idCliente) {
         log.info("[Start] PedidoApplicationService - buscarPedidosPorCliente");
         log.info("[idCliente] {}", idCliente);
-        clienteService.buscaClienteAtravesId(idCliente); // Verifica se o cliente existe
+        clienteService.buscaClienteAtravesId(idCliente);
         List<Pedido> pedidos = pedidoRepository.buscaPedidosPorCliente(idCliente.toString());
         log.info("[Finish] PedidoApplicationService - buscarPedidosPorCliente - Total de pedidos encontrados: {}", pedidos.size());
         return PedidoListResponse.converte(pedidos);
@@ -88,6 +89,16 @@ public class PedidoApplicationService implements PedidoService {
         }
         pedidoRepository.delete(pedido);
         log.info("[Finish] PedidoApplicationService - deletaPedido");
+    }
+
+    @Override
+    public void alteraPedidoDoClienteComID(UUID idCliente, UUID idPedido, PedidoAlteracaoRequest pedidoAlteracaoRequest) {
+        log.info("[start] PedidoApplicationService - alteraPedidoDoClienteComID");
+        Pedido pedido = pedidoRepository.findById(idPedido)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pedido não encontrado"));
+        pedido.altera(pedidoAlteracaoRequest);
+        pedidoRepository.save(pedido);
+        log.info("[finaliza] PedidoApplicationService - alteraPedidoDoClienteComID");
     }
 }
 

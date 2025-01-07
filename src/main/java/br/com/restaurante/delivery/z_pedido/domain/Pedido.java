@@ -1,6 +1,7 @@
 package br.com.restaurante.delivery.z_pedido.domain;
 
 import br.com.restaurante.delivery.domain.Cliente;
+import br.com.restaurante.delivery.z_pedido.api.PedidoAlteracaoRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -74,5 +75,12 @@ public class Pedido {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public void altera(PedidoAlteracaoRequest pedidoRequest) {
+        this.nomeRefeicao = pedidoRequest.getNomeRefeicao();
+        this.nomeBebida = pedidoRequest.getNomeBebida();
+        this.observacaoPedido = pedidoRequest.getObservacaoPedido();
+        this.dataHoraDaUltimaAlteracao = LocalDateTime.now();
     }
 }

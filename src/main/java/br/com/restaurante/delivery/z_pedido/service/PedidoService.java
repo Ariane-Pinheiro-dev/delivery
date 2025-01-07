@@ -1,5 +1,6 @@
 package br.com.restaurante.delivery.z_pedido.service;
 
+import br.com.restaurante.delivery.z_pedido.api.PedidoAlteracaoRequest;
 import br.com.restaurante.delivery.z_pedido.api.PedidoListResponse;
 import br.com.restaurante.delivery.z_pedido.api.PedidoRequest;
 import br.com.restaurante.delivery.z_pedido.api.PedidoResponse;
@@ -13,4 +14,5 @@ public interface PedidoService {
     List<PedidoListResponse> buscaTodosPedidos();
     List<PedidoListResponse> buscarPedidosPorCliente(UUID idCliente);
     void deletaPedidoDoClienteComId(UUID idCliente, UUID idPedido);
+    void alteraPedidoDoClienteComID(UUID idCliente, UUID idPedido, PedidoAlteracaoRequest pedidoAlteracaoRequest);
 }
