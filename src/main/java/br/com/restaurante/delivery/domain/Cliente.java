@@ -2,7 +2,7 @@ package br.com.restaurante.delivery.domain;
 
 import br.com.restaurante.delivery.api.ClienteAlteracaoRequest;
 import br.com.restaurante.delivery.api.ClienteRequest;
-import br.com.restaurante.delivery.z_pedido.domain.Pedido;
+import br.com.restaurante.delivery.y_pedido.domain.Pedido;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

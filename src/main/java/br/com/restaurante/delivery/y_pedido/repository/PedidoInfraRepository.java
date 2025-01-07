@@ -1,6 +1,6 @@
-package br.com.restaurante.delivery.z_pedido.repository;
+package br.com.restaurante.delivery.y_pedido.repository;
 
-import br.com.restaurante.delivery.z_pedido.domain.Pedido;
+import br.com.restaurante.delivery.y_pedido.domain.Pedido;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;

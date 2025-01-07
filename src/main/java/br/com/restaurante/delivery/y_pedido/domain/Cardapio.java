@@ -1,4 +1,4 @@
-package br.com.restaurante.delivery.z_pedido.domain;
+package br.com.restaurante.delivery.y_pedido.domain;
 
 import org.springframework.stereotype.Service;
 

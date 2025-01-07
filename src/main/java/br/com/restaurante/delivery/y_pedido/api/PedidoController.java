@@ -1,8 +1,6 @@
-package br.com.restaurante.delivery.z_pedido.api;
+package br.com.restaurante.delivery.y_pedido.api;
 
-import br.com.restaurante.delivery.z_pedido.domain.Pedido;
-import br.com.restaurante.delivery.z_pedido.service.PedidoApplicationService;
-import br.com.restaurante.delivery.z_pedido.service.PedidoService;
+import br.com.restaurante.delivery.y_pedido.service.PedidoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

@@ -1,4 +1,4 @@
-package br.com.restaurante.delivery.z_pedido.api;
+package br.com.restaurante.delivery.y_pedido.api;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Value;

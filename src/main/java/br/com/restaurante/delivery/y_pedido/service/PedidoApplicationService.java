@@ -1,13 +1,13 @@
-package br.com.restaurante.delivery.z_pedido.service;
+package br.com.restaurante.delivery.y_pedido.service;
 
 import br.com.restaurante.delivery.service.ClienteService;
-import br.com.restaurante.delivery.z_pedido.api.PedidoAlteracaoRequest;
-import br.com.restaurante.delivery.z_pedido.api.PedidoListResponse;
-import br.com.restaurante.delivery.z_pedido.api.PedidoRequest;
-import br.com.restaurante.delivery.z_pedido.api.PedidoResponse;
-import br.com.restaurante.delivery.z_pedido.domain.Cardapio;
-import br.com.restaurante.delivery.z_pedido.domain.Pedido;
-import br.com.restaurante.delivery.z_pedido.repository.PedidoRepository;
+import br.com.restaurante.delivery.y_pedido.api.PedidoAlteracaoRequest;
+import br.com.restaurante.delivery.y_pedido.api.PedidoListResponse;
+import br.com.restaurante.delivery.y_pedido.api.PedidoRequest;
+import br.com.restaurante.delivery.y_pedido.api.PedidoResponse;
+import br.com.restaurante.delivery.y_pedido.domain.Cardapio;
+import br.com.restaurante.delivery.y_pedido.domain.Pedido;
+import br.com.restaurante.delivery.y_pedido.repository.PedidoRepository;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

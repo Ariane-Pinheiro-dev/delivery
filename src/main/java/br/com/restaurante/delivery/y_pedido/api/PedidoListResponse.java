@@ -1,6 +1,6 @@
-package br.com.restaurante.delivery.z_pedido.api;
+package br.com.restaurante.delivery.y_pedido.api;
 
-import br.com.restaurante.delivery.z_pedido.domain.Pedido;
+import br.com.restaurante.delivery.y_pedido.domain.Pedido;
 
 import java.util.List;
 import java.util.UUID;
