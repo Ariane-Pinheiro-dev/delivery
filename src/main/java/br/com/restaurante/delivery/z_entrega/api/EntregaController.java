@@ -43,4 +43,12 @@ public class EntregaController implements EntregaAPI {
         log.info("[finaliza] EntregaController - getEntregasPorPedido - Total de entregas encontrados: {}", entregas.size());
         return entregas;
     }
+
+    @Override
+    public void deleteEntregaDoPedidoComId(UUID idEntrega, UUID idPedido) {
+        log.info("[inicia] EntregaController - deleteEntregaDoPedidoComId");
+        log.info("[idEntrega] {} - [idEntrega] {}", idEntrega, idPedido);
+        entregaService.deleteEntregaDoPedidoComId(idEntrega, idPedido);
+        log.info("[finaliza] EntregaController - deleteEntregaDoPedidoComId");
+    }
 }

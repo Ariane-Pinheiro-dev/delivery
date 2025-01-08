@@ -7,6 +7,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -40,5 +41,24 @@ public class EntregaInfraRepository implements EntregaRepository {
         List<Entrega> entregasPedidos = entregaSpringDataJPARepository.findByIdPedido(idPedidoUUID);
         log.info("[finish] EntregaInfraRepository - buscaEntregaPorPedido - Total de entregas encontradas: {}", entregasPedidos.size());
         return entregasPedidos;
+    }
+
+    @Override
+    public void delete(Entrega entrega) {
+        log.info("[start] EntregaInfraRepository - deletaEntrega - Entrega ID: {}", entrega.getIdEntrega());
+        entregaSpringDataJPARepository.delete(entrega);
+        log.info("[finish] EntregaInfraRepository - deletaEntrega - Entrega ID: {}", entrega.getIdEntrega());
+    }
+
+    @Override
+    public Optional<Entrega> findById(UUID idEntrega) {
+        log.info("[start] EntregaInfraRepository - findById");
+        Optional<Entrega> entrega = entregaSpringDataJPARepository.findById(idEntrega);
+        if (entrega.isPresent()) {
+            log.info("[finish] EntregaInfraRepository - Entrega encontrada: {}", entrega.get().getIdEntrega());
+        } else {
+            log.info("[finish] EntregaInfraRepository - Entrega não encontrada.");
+        }
+        return entrega;
     }
 }

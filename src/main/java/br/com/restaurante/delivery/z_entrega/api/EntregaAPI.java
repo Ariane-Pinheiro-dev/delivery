@@ -28,4 +28,8 @@ public interface EntregaAPI {
     @ResponseStatus(code = HttpStatus.OK)
     List<EntregaListResponse> getEntregaPorPedido(@PathVariable UUID idPedido);
 
+    @DeleteMapping(value = "/{idEntrega}/pedido/{idPedido}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void deleteEntregaDoPedidoComId(@PathVariable UUID idEntrega, @PathVariable UUID idPedido);
+
 }

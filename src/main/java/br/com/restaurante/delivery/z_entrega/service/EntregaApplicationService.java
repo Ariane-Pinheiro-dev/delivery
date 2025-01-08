@@ -79,4 +79,18 @@ public class EntregaApplicationService implements EntregaService {
         log.info("[Finish] EntregaApplicationService - buscarEntregasPorPedido - Total de entregas encontradas: {}", entrega.size());
         return EntregaListResponse.converte(entrega);
     }
+
+    @Override
+    public void deleteEntregaDoPedidoComId(UUID idEntrega, UUID idPedido) {
+        log.info("[Start] EntregaApplicationService - deletaEntrega");
+        log.info("[idEntrega] {} - [idEntrega] {}", idEntrega, idPedido);
+        pedidoService.buscaPedidoAtravesId(idPedido);
+        Entrega entrega = entregaRepository.findById(idEntrega)
+                .orElseThrow(() -> new IllegalArgumentException("Entrega não encontrada"));
+        if (!entrega.getIdPedido().equals(idPedido)) {
+            throw new IllegalArgumentException("A entrega não pertence ao pedido informado");
+        }
+        entregaRepository.delete(entrega);
+        log.info("[Finish] EntregaApplicationService - deletaEntrega");
+    }
 }
