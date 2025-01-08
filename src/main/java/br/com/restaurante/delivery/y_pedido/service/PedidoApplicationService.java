@@ -100,6 +100,12 @@ public class PedidoApplicationService implements PedidoService {
         pedidoRepository.save(pedido);
         log.info("[finaliza] PedidoApplicationService - alteraPedidoDoClienteComID");
     }
+
+    @Override
+    public Pedido buscaPedidoAtravesId(UUID idPedido) {
+        return pedidoRepository.findById(idPedido)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pedido não encontrado"));
+    }
 }
 
 

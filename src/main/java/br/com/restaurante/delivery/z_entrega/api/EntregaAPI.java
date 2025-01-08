@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/v1/entregas")
+@RequestMapping("/v1/pedidos")
 public interface EntregaAPI {
 
-    @PostMapping("/{idEntrega}")
-    @ResponseStatus(code = HttpStatus.CREATED)
-    EntregaResponse postEntrega(@PathVariable UUID idEntrega,
-                                 @Valid @RequestBody PedidoRequest pedidoRequest);
+    @PostMapping("/{idPedido}/entrega")
+    @ResponseStatus(HttpStatus.CREATED)
+    EntregaResponse postEntrega(@PathVariable UUID idPedido,
+                                @Valid @RequestBody EntregaRequest entregaRequest);
 
 }

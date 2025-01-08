@@ -10,11 +10,21 @@ import java.util.UUID;
 @Value
 public class EntregaResponse {
     UUID idEntrega;
-    String nomeCompletoCliente;
+    String nomeCompleto;
     String endereco;
     String celular;
     String nomeRefeicao;
     String nomeBebida;
     double valor;
 
+    public EntregaResponse(UUID idEntrega, String nomeCompleto, String endereco, String celular, String nomeRefeicao, String nomeBebida, double valor) {
+        this.idEntrega = idEntrega;
+        this.nomeCompleto = nomeCompleto;
+        this.endereco = endereco;
+        this.celular = celular;
+        this.nomeRefeicao = nomeRefeicao;
+        this.nomeBebida = nomeBebida;
+        this.valor = valor;
+    }
 }
+
