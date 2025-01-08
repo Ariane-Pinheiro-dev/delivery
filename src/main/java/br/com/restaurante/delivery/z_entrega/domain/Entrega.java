@@ -2,6 +2,8 @@ package br.com.restaurante.delivery.z_entrega.domain;
 
 import br.com.restaurante.delivery.domain.Cliente;
 import br.com.restaurante.delivery.y_pedido.domain.Pedido;
+import br.com.restaurante.delivery.z_entrega.api.EntregaAlteracaoRequest;
+import br.com.restaurante.delivery.z_entrega.api.EntregaRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -49,6 +51,16 @@ public class Entrega {
         this.nomeRefeicao = nomeRefeicao;
         this.nomeBebida = nomeBebida;
         this.valor = valor;
+
+    }
+
+    public void altera(EntregaAlteracaoRequest entregaRequest) {
+        this.nomeCompleto = entregaRequest.getNomeCompleto();
+        this.endereco = entregaRequest.getEndereco();
+        this.celular = entregaRequest.getCelular();
+        this.nomeRefeicao = entregaRequest.getNomeRefeicao();
+        this.nomeBebida = entregaRequest.getNomeBebida();
+        this.valor = entregaRequest.getValor();
     }
 }
 

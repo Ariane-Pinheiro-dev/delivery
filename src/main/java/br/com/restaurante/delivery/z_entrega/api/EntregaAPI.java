@@ -1,5 +1,6 @@
 package br.com.restaurante.delivery.z_entrega.api;
 
+import br.com.restaurante.delivery.y_pedido.api.PedidoAlteracaoRequest;
 import br.com.restaurante.delivery.y_pedido.api.PedidoListResponse;
 import br.com.restaurante.delivery.y_pedido.api.PedidoRequest;
 import br.com.restaurante.delivery.y_pedido.api.PedidoResponse;
@@ -31,5 +32,10 @@ public interface EntregaAPI {
     @DeleteMapping(value = "/{idEntrega}/pedido/{idPedido}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deleteEntregaDoPedidoComId(@PathVariable UUID idEntrega, @PathVariable UUID idPedido);
+
+    @PatchMapping("/{idPedido}/entrega/{idEntrega}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void patchEntrega(@PathVariable UUID idPedido, @PathVariable UUID idEntrega,
+                      @Valid @RequestBody EntregaAlteracaoRequest entregaAlteracaoRequest);
 
 }

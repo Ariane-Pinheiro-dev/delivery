@@ -51,4 +51,12 @@ public class EntregaController implements EntregaAPI {
         entregaService.deleteEntregaDoPedidoComId(idEntrega, idPedido);
         log.info("[finaliza] EntregaController - deleteEntregaDoPedidoComId");
     }
+
+    @Override
+    public void patchEntrega(UUID idPedido, UUID idEntrega, EntregaAlteracaoRequest entregaAlteracaoRequest) {
+        log.info("[inicia] EntregaController - patchEntrega");
+        log.info("[idPedido] {} - [idCliente] {}", idPedido, idEntrega);
+        entregaService.alteraEntregaDoPedidoComID(idPedido, idEntrega, entregaAlteracaoRequest);
+        log.info("[inicia] EntregaController - patchEntrega");
+    }
 }

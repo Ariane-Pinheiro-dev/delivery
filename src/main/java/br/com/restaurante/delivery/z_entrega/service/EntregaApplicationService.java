@@ -4,6 +4,7 @@ import br.com.restaurante.delivery.y_pedido.api.PedidoListResponse;
 import br.com.restaurante.delivery.y_pedido.domain.Cardapio;
 import br.com.restaurante.delivery.y_pedido.domain.Pedido;
 import br.com.restaurante.delivery.y_pedido.service.PedidoService;
+import br.com.restaurante.delivery.z_entrega.api.EntregaAlteracaoRequest;
 import br.com.restaurante.delivery.z_entrega.api.EntregaListResponse;
 import br.com.restaurante.delivery.z_entrega.api.EntregaRequest;
 import br.com.restaurante.delivery.z_entrega.api.EntregaResponse;
@@ -12,7 +13,9 @@ import br.com.restaurante.delivery.z_entrega.repository.EntregaRepository;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.UUID;
@@ -92,5 +95,15 @@ public class EntregaApplicationService implements EntregaService {
         }
         entregaRepository.delete(entrega);
         log.info("[Finish] EntregaApplicationService - deletaEntrega");
+    }
+
+    @Override
+    public void alteraEntregaDoPedidoComID(UUID idPedido, UUID idEntrega, EntregaAlteracaoRequest entregaAlteracaoRequest) {
+        log.info("[start] EntregaApplicationService - alteraEntregaDoPedidoComID");
+        Entrega entrega = entregaRepository.findById(idEntrega)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Entrega não encontrada"));
+        entrega.altera(entregaAlteracaoRequest);
+        entregaRepository.save(entrega);
+        log.info("[finaliza] EntregaApplicationService - alteraEntregaDoPedidoComID");
     }
 }

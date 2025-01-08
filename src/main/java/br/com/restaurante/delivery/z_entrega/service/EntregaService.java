@@ -1,5 +1,6 @@
 package br.com.restaurante.delivery.z_entrega.service;
 
+import br.com.restaurante.delivery.z_entrega.api.EntregaAlteracaoRequest;
 import br.com.restaurante.delivery.z_entrega.api.EntregaListResponse;
 import br.com.restaurante.delivery.z_entrega.api.EntregaRequest;
 import br.com.restaurante.delivery.z_entrega.api.EntregaResponse;
@@ -13,4 +14,5 @@ public interface EntregaService {
     List<EntregaListResponse> buscaTodasEntregas();
     List<EntregaListResponse> buscarEntregasPorPedido(UUID idPedido);
     void deleteEntregaDoPedidoComId(UUID idEntrega, UUID idPedido);
+    void alteraEntregaDoPedidoComID(UUID idPedido, UUID idEntrega, EntregaAlteracaoRequest entregaAlteracaoRequest);
 }
