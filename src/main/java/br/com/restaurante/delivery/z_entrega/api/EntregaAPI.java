@@ -24,4 +24,8 @@ public interface EntregaAPI {
     @ResponseStatus(code = HttpStatus.OK)
     List<EntregaListResponse> getTodasEntregas();
 
+    @GetMapping(value = "/pedido/{idPedido}")
+    @ResponseStatus(code = HttpStatus.OK)
+    List<EntregaListResponse> getEntregaPorPedido(@PathVariable UUID idPedido);
+
 }

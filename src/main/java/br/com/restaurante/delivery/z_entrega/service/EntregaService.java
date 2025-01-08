@@ -11,4 +11,5 @@ import java.util.UUID;
 public interface EntregaService {
     EntregaResponse criaEntrega(UUID idPedido, @Valid EntregaRequest entregaRequest);
     List<EntregaListResponse> buscaTodasEntregas();
+    List<EntregaListResponse> buscarEntregasPorPedido(UUID idPedido);
 }

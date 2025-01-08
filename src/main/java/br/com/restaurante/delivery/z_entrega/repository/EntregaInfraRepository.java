@@ -7,6 +7,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
 @Log4j2
@@ -29,5 +30,15 @@ public class EntregaInfraRepository implements EntregaRepository {
         log.info("[finish] EntregaInfraRepository - buscaTodasEntregas");
         return todasEntregas;
 
+    }
+
+    @Override
+    public List<Entrega> buscaEntregaPorPedido(String idPedido) {
+        log.info("[start] EntregaInfraRepository - buscaEntregaPorPedido");
+        log.info("[idPedido] {}", idPedido);
+        UUID idPedidoUUID = UUID.fromString(idPedido);
+        List<Entrega> entregasPedidos = entregaSpringDataJPARepository.findByIdPedido(idPedidoUUID);
+        log.info("[finish] EntregaInfraRepository - buscaEntregaPorPedido - Total de entregas encontradas: {}", entregasPedidos.size());
+        return entregasPedidos;
     }
 }

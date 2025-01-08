@@ -9,4 +9,5 @@ import java.util.UUID;
 public interface EntregaRepository  {
     Entrega save(Entrega entrega);
     List<Entrega> findyAll();
+    List<Entrega> buscaEntregaPorPedido(String idPedido);
 }

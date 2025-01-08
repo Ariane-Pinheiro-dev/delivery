@@ -34,4 +34,13 @@ public class EntregaController implements EntregaAPI {
         log.info("[finaliza] EntregaController - getTodasEntregas");
         return entrega;
     }
+
+    @Override
+    public List<EntregaListResponse> getEntregaPorPedido(UUID idPedido) {
+        log.info("[inicia] EntregaController - getEntregasPorPedido");
+        log.info("[idPedido] {}", idPedido);
+        List<EntregaListResponse> entregas = entregaService.buscarEntregasPorPedido(idPedido);
+        log.info("[finaliza] EntregaController - getEntregasPorPedido - Total de entregas encontrados: {}", entregas.size());
+        return entregas;
+    }
 }

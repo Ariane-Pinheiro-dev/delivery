@@ -69,4 +69,14 @@ public class EntregaApplicationService implements EntregaService {
         log.info("[Finish] EntregaService.buscaTodasEntregas");
         return EntregaListResponse.converte(entregas);
     }
+
+    @Override
+    public List<EntregaListResponse> buscarEntregasPorPedido(UUID idPedido) {
+        log.info("[Start] EntregaApplicationService - buscarEntregasPorPedido");
+        log.info("[idPedido] {}", idPedido);
+        pedidoService.buscaPedidoAtravesId(idPedido);
+        List<Entrega> entrega = entregaRepository.buscaEntregaPorPedido(idPedido.toString());
+        log.info("[Finish] EntregaApplicationService - buscarEntregasPorPedido - Total de entregas encontradas: {}", entrega.size());
+        return EntregaListResponse.converte(entrega);
+    }
 }

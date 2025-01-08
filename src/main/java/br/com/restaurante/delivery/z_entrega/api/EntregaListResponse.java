@@ -10,7 +10,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class EntregaListResponse {
-    
+
     @JsonProperty("idEntrega")
     private UUID idEntrega;
     @JsonProperty("nomeCompleto")
