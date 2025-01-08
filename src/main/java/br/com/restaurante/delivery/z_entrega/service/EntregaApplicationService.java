@@ -1,8 +1,10 @@
 package br.com.restaurante.delivery.z_entrega.service;
 
+import br.com.restaurante.delivery.y_pedido.api.PedidoListResponse;
 import br.com.restaurante.delivery.y_pedido.domain.Cardapio;
 import br.com.restaurante.delivery.y_pedido.domain.Pedido;
 import br.com.restaurante.delivery.y_pedido.service.PedidoService;
+import br.com.restaurante.delivery.z_entrega.api.EntregaListResponse;
 import br.com.restaurante.delivery.z_entrega.api.EntregaRequest;
 import br.com.restaurante.delivery.z_entrega.api.EntregaResponse;
 import br.com.restaurante.delivery.z_entrega.domain.Entrega;
@@ -12,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -57,5 +60,13 @@ public class EntregaApplicationService implements EntregaService {
                 entrega.getNomeRefeicao(),
                 entrega.getNomeBebida(),
                 entrega.getValor());
+    }
+
+    @Override
+    public List<EntregaListResponse> buscaTodasEntregas() {
+        log.info("[Start] EntregaService.buscaTodasEntregas");
+        List<Entrega> entregas = entregaRepository.findyAll();
+        log.info("[Finish] EntregaService.buscaTodasEntregas");
+        return EntregaListResponse.converte(entregas);
     }
 }

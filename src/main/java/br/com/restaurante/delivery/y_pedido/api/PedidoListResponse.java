@@ -23,7 +23,7 @@ public class PedidoListResponse {
             this.observacaoPedido = pedido.getObservacaoPedido();
             this.valor = pedido.getValor();
         } else {
-            this.idPedido = null;  // ou algum valor padrão
+            this.idPedido = null;
             this.nomeCliente = "Desconhecido";
             this.nomeRefeicao = "";
             this.nomeBebida = "";
